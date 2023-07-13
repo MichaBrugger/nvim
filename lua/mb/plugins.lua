@@ -46,6 +46,7 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope.nvim" })
 	use({ "nvim-treesitter/nvim-treesitter" })
 	use({ "akinsho/toggleterm.nvim" })
+	use({ "lewis6991/impatient.nvim" })
 	-- use { "kyazdani42/nvim-tree.lua" }
 
 	-- Cmp
@@ -76,6 +77,9 @@ return packer.startup(function(use)
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "akinsho/bufferline.nvim" })
 	use({ "goolord/alpha-nvim" })
+
+	-- Snippets
+	use({ "L3MON4D3/LuaSnip" })
 
 	-- Languages support
 	use({ "dmmulroy/tsc.nvim" }) -- Async project-wide TypeScript type-checking
@@ -109,8 +113,8 @@ return packer.startup(function(use)
 					end
 					return sane_name
 				end,
-        open_app_foreground = false,
-        finder = "telescope.nvim",
+				open_app_foreground = false,
+				finder = "telescope.nvim",
 			})
 		end,
 	})
