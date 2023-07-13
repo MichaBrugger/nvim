@@ -11,5 +11,8 @@ require("mb.telescope")
 require("mb.autopairs")
 require("mb.autocommands")
 require("mb.toggleterm")
+require("mb.lualine")
+require("mb.bufferline")
+
 -- require("mb.nvim-tree")
 

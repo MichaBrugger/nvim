@@ -66,12 +66,14 @@ return packer.startup(function(use)
   -- Syntax
   use { "kylechui/nvim-surround" } -- Adding/changing/deleting surrounding delimiter pairs
   use { "windwp/nvim-autopairs" }
-  use {"folke/which-key.nvim"}
+  use { "folke/which-key.nvim" }
 
-  -- Themes
+  -- Optics
   use { "folke/tokyonight.nvim" }
   use { "ahmedkhalf/project.nvim" }
   use { "moll/vim-bbye" }
+  use { "nvim-lualine/lualine.nvim" }
+  use { "akinsho/bufferline.nvim" }
 
   -- Languages support
   use { "dmmulroy/tsc.nvim" } -- Async project-wide TypeScript type-checking
