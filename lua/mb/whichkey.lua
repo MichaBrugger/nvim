@@ -84,10 +84,10 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Buffers",
 	},
-	-- ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
-	["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	-- ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["f"] = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -104,6 +104,13 @@ local mappings = {
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
 
+	o = {
+		name = "Obsidian",
+		f = { "<cmd>ObsidianQuickSwitch<cr>", "Search" },
+    b = { "<cmd>ObsidianBacklinks<cr>", "Backlinks" },
+    n = { "<cmd>ObsidianNew<cr>", "New Note" },
+    o = { "<cmd>ObsidianOpen<cr>", "Open in Obsidian" },
+	},
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 
 	["M"] = { "<cmd>Mason<cr>", "Mason" },

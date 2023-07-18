@@ -47,7 +47,7 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter" })
 	use({ "akinsho/toggleterm.nvim" })
 	use({ "lewis6991/impatient.nvim" })
-	-- use { "kyazdani42/nvim-tree.lua" }
+	use({ "kyazdani42/nvim-tree.lua" })
 
 	-- Cmp
 	use({ "hrsh7th/nvim-cmp" })
@@ -63,15 +63,29 @@ return packer.startup(function(use)
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate" })
+	use({ "leafOfTree/vim-svelte-plugin" })
+	use({ "rafamadriz/friendly-snippets" })
 
 	-- Syntax
-	use({ "kylechui/nvim-surround" }) -- Adding/changing/deleting surrounding delimiter pairs
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
 	use({ "windwp/nvim-autopairs" })
 	use({ "folke/which-key.nvim" })
 	use({ "numToStr/Comment.nvim" })
 
 	-- Optics
 	use({ "folke/tokyonight.nvim" })
+	use({ "sainnhe/everforest" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({ "joshdick/onedark.vim" })
+	use({ "lunarvim/Onedarker.nvim" })
 	use({ "ahmedkhalf/project.nvim" })
 	use({ "moll/vim-bbye" })
 	use({ "nvim-lualine/lualine.nvim" })
@@ -83,13 +97,13 @@ return packer.startup(function(use)
 
 	-- Languages support
 	use({ "dmmulroy/tsc.nvim" }) -- Async project-wide TypeScript type-checking
+	use({ "windwp/nvim-ts-autotag" })
 
 	-- Integrations
 	use({
 		"epwalsh/obsidian.nvim",
 		config = function()
 			require("obsidian").setup({
-				use_advanced_uri = true,
 				dir = "~/Documents/phd",
 				daily_notes = {
 					folder = "notes",
@@ -104,7 +118,7 @@ return packer.startup(function(use)
 					local sane_name = ""
 					if title ~= nil then
 						-- If title is given, transform it into valid file name.
-						sane_name = title:gsub(" ", "_"):gsub("[^A-Za-z0-9-]", ""):lower()
+						sane_name = title:gsub(" ", " "):gsub("[^A-Za-z0-9-]", ""):lower()
 					else
 						-- If title is nil, just add 4 random uppercase letters to the suffix.
 						for _ in 1, 4 do
@@ -113,11 +127,25 @@ return packer.startup(function(use)
 					end
 					return sane_name
 				end,
+				use_advanced_uri = true,
 				open_app_foreground = false,
 				finder = "telescope.nvim",
 			})
 		end,
 	})
+	-- use({
+	-- 	"jcdickinson/codeium.nvim",
+	-- 	commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+	-- 	config = true,
+	-- })
+	-- use({
+	--   "zbirenbaum/copilot.lua",
+	--   cmd = "Copilot",
+	--   event = "InsertEnter",
+	--   config = function()
+	--     require("copilot").setup({})
+	--   end,
+	-- })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

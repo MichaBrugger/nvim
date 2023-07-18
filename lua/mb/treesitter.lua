@@ -18,6 +18,12 @@ function M.config()
     autopairs = {
       enable = true,
     },
+    autotag = {
+      enable = true,
+      filetypes = {
+        "html", "svelte", "xml", "typescript", "javascript"
+      }
+    },
     indent = { enable = true, disable = { "python", "css" } },
 
     context_commentstring = {
