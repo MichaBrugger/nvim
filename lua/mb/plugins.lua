@@ -56,6 +56,12 @@ return packer.startup(function(use)
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lua" })
+	use({ "MunifTanjim/prettier.nvim" })
+	use({
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
+	-- use({ "lukas-reineke/lsp-format.nvim" })
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
@@ -64,7 +70,10 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate" })
 	use({ "leafOfTree/vim-svelte-plugin" })
+	use({ "leafOfTree/vim-svelte-theme" })
 	use({ "rafamadriz/friendly-snippets" })
+	use({ "https://github.com/jalvesaq/zotcite" })
+	use({ "https://github.com/jalvesaq/cmp-zotcite" })
 
 	-- Syntax
 	use({
@@ -82,6 +91,7 @@ return packer.startup(function(use)
 
 	-- Optics
 	use({ "folke/tokyonight.nvim" })
+	use({ "folke/trouble.nvim" })
 	use({ "sainnhe/everforest" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "joshdick/onedark.vim" })
@@ -91,6 +101,39 @@ return packer.startup(function(use)
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "akinsho/bufferline.nvim" })
 	use({ "goolord/alpha-nvim" })
+	use({
+		"xiyaowong/transparent.nvim",
+		require("transparent").setup({
+			groups = { -- table: default groups
+				"Normal",
+				"NormalNC",
+				"Comment",
+				"Constant",
+				"Special",
+				"Identifier",
+				"Statement",
+				"PreProc",
+				"Type",
+				"Underlined",
+				"Todo",
+				"String",
+				"Function",
+				"Conditional",
+				"Repeat",
+				"Operator",
+				"Structure",
+				"LineNr",
+				"NonText",
+				"SignColumn",
+				"CursorLineNr",
+				"EndOfBuffer",
+			},
+			extra_groups = {
+				"NormalFloat",
+				"NvimTreeNormal",
+			},
+		}),
+	})
 
 	-- Snippets
 	use({ "L3MON4D3/LuaSnip" })
@@ -104,7 +147,7 @@ return packer.startup(function(use)
 		"epwalsh/obsidian.nvim",
 		config = function()
 			require("obsidian").setup({
-				dir = "~/Documents/phd",
+				dir = "~/Documents/obsidian/phd",
 				daily_notes = {
 					folder = "notes",
 				},
@@ -133,20 +176,69 @@ return packer.startup(function(use)
 			})
 		end,
 	})
+
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- })
+	use({
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = false,
+					auto_refresh = false,
+					keymap = {
+						jump_prev = "[[",
+						jump_next = "]]",
+						accept = "<CR>",
+						refresh = "gr",
+						open = "<M-CR>",
+					},
+					layout = {
+						position = "bottom", -- | top | left | right
+						ratio = 0.4,
+					},
+				},
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					debounce = 75,
+					keymap = {
+						accept = "<M-l>",
+						accept_word = false,
+						accept_line = false,
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+				},
+				filetypes = {
+					yaml = false,
+					markdown = false,
+					help = false,
+					gitcommit = false,
+					gitrebase = false,
+					hgcommit = false,
+					svn = false,
+					cvs = false,
+					["."] = false,
+				},
+				copilot_node_command = "node", -- Node.js version must be > 16.x
+				server_opts_overrides = {},
+			})
+		end,
+	})
 	-- use({
 	-- 	"jcdickinson/codeium.nvim",
 	-- 	commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
 	-- 	config = true,
 	-- })
-	-- use({
-	--   "zbirenbaum/copilot.lua",
-	--   cmd = "Copilot",
-	--   event = "InsertEnter",
-	--   config = function()
-	--     require("copilot").setup({})
-	--   end,
-	-- })
-
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

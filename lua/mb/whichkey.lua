@@ -95,6 +95,12 @@ local mappings = {
 	},
 	-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
+	[" "] = {
+		name = "Settings",
+		d = { "<cmd> xrandr --output DP-2 --auto --left-of DP-1<cr>" },
+		t = { "<cmd>TransparentToggle<cr>", "Transparent" },
+	},
+
 	P = {
 		name = "Packer",
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -107,9 +113,9 @@ local mappings = {
 	o = {
 		name = "Obsidian",
 		f = { "<cmd>ObsidianQuickSwitch<cr>", "Search" },
-    b = { "<cmd>ObsidianBacklinks<cr>", "Backlinks" },
-    n = { "<cmd>ObsidianNew<cr>", "New Note" },
-    o = { "<cmd>ObsidianOpen<cr>", "Open in Obsidian" },
+		b = { "<cmd>ObsidianBacklinks<cr>", "Backlinks" },
+		n = { "<cmd>ObsidianNew<cr>", "New Note" },
+		o = { "<cmd>ObsidianOpen<cr>", "Open in Obsidian" },
 	},
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 
@@ -136,6 +142,14 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
 		},
+	},
+
+	p = {
+		name = "Config",
+		i = { ":e ~/.config/i3/config<cr>", "i3" },
+		n = { ":e ~/.config/nvim/init.lua<cr>", "Nvim" },
+		k = { ":e ~/.config/kitty/kitty.conf<cr>", "Kitty" },
+		o = { ":e ~/Documents/obsidian/phd/.obsidian.vimrc>", "Obsidian" },
 	},
 
 	l = {
