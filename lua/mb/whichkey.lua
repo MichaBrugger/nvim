@@ -149,7 +149,7 @@ local mappings = {
 		i = { ":e ~/.config/i3/config<cr>", "i3" },
 		n = { ":e ~/.config/nvim/init.lua<cr>", "Nvim" },
 		k = { ":e ~/.config/kitty/kitty.conf<cr>", "Kitty" },
-		o = { ":e ~/Documents/obsidian/phd/.obsidian.vimrc>", "Obsidian" },
+		o = { ":e ~/Documents/obsidian/phd/.obsidian.vimrc<cr>", "Obsidian" },
 	},
 
 	l = {
